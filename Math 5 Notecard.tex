@@ -1,0 +1,145 @@
+% !root= Exam 4.tex
+\documentclass{article}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{setspace}
+\usepackage{units}
+\usepackage{graphicx}
+\usepackage{amsopn}
+\usepackage{bbding}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{cancel}
+\usepackage{etoolbox}
+\usepackage{enumitem}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{multicol}
+\usepackage{numerica}
+\usepackage[top=0.1in, left=0.1in, right=0.1in, bottom=0.1in]{geometry}
+\AtBeginEnvironment{document}{\everymath{\displaystyle}}
+\pagestyle{plain}
+\title{EXAM 4}
+\author{MATH 1B, Bach}
+\date{Tejas Patel, Roll \#30}
+\begin{document}
+
+\begin{multicols*}{2}
+\footnotesize Row Operations: \\ Swap, Addition, Multiplication
+\\RREF: pivot rows have leading value of 1, RREF is unique
+\\Test 1:$a=\begin{bmatrix}2\\-1\\2\end{bmatrix} \begin{bmatrix}-2\\3\\1\end{bmatrix} b= \begin{bmatrix}4\\0\\7\end{bmatrix}$
+\\Can $b$ be written as a linear combination of $a_1$ and $a_2$? \\ Ax=b $\begin{bmatrix}2&-2&4\\-1&3&0\\2&1&7\end{bmatrix}$ 
+RREF $\begin{bmatrix}1&0&3\\0&1&1\\0&0&0\end{bmatrix}\, c_1=3,c_2=1 $ for $c_1a_1+c_2a+2=b$\\Prove a set of 3 vectors in $\mathbb{R}^2$ always spans $\mathbb{R}^2$. C/E: $\begin{bmatrix}0\\1\end{bmatrix}\begin{bmatrix}0\\1\end{bmatrix}\begin{bmatrix}0\\1\end{bmatrix}$
+\\\textbf{Ways to prove linear dependence}. Find relation, multiples, trivial solution, or more vectors than variables
+\\Traffic flow network eqs in=out
+$600=x_1+x_4,x_3+x_4=300,\\x_2+x_1=x_5+700, x_2+x_3=700$ put it in matrix \& RREF. General Solution is all variables in terms of const and free vars. If ask for contstraints, make car number not go negative yk.
+\\Let $T$ transform $u \begin{bmatrix}-2\\-3\end{bmatrix}$to$ \begin{bmatrix}-3\\4\end{bmatrix}$ and $v \begin{bmatrix}5\\-1\end{bmatrix}$to$ \begin{bmatrix}16\\10\end{bmatrix}$ Find $3u+2v$
+\\=$3\begin{bmatrix}-3\\4\end{bmatrix}+2\begin{bmatrix}16\\10\end{bmatrix}=\begin{bmatrix}23\\-8\end{bmatrix}$
+\\$A=\begin{bmatrix}1&-2&-1\\0&5&0\\3&-6&-3\end{bmatrix}b=\begin{bmatrix}b_1\\b_2\\b_3\end{bmatrix}$ determine if Ax=b is consistent for all $b_1,b_2,b_3$.
+\\$\begin{bmatrix}1&-2&-1&b_1\\0&5&0&b_2\\3&-6&-3&b_3\end{bmatrix}$ RREF to $b_1=x_1-2x_2-x_3, b_2=5x_2, b_3=3b_1$ \textbf{Not consistent for all b/c its possible last row = 0,0,0,$\not$0}
+\\Explain why this means the transformation isnt onto: $b_3-3b_1$ will always be 0, meaning another value of $b_3-3b_1$ is not mapped meaning its not onto, counterexample (2,0,6).
+\\Solve the matrix equation for X. A,B,X are square. A-B is invertible. Check work. \\ $AX-BX=A \rightarrow X(A-B)=A \rightarrow X=(A-B)^{-1}A$ prove using A=1,2,3,4 and B=2,3,4,5
+\\Let $A=\begin{bmatrix}1&1&1\\0&p-2&-1\\0&0&3\end{bmatrix},b=\begin{bmatrix}-2\\h\\15\end{bmatrix}$ Determine all p and h so the system is inconsistent. If $p=2$ and $h\neq -5$. Unique solution: All h's except -5 and p=2. Infinite solutions when p=2,h=-5 since $x_2$ will be a free variable.
+\\Transformation $e_1 \rightarrow 4e_1+e_2, e_2$ is reflected across the x axis. (1,0) $\rightarrow$ (4,1) and (0,1)$\rightarrow$(0,-1) so the transformation matrix is (4,0 and 1,-1). Find T(3,5). plug into transformation matrix and get (12,-2)
+\\Find $A^{-1}$ and write $A$ as a product of elementary matrices \\$\begin{bmatrix}1&-2\\-3&5\end{bmatrix}$ Augment with elementary matrix to get $\begin{bmatrix}-5&-2\\-3&-1\end{bmatrix}$
+\\Two write as a product of elementary, Row reduce, reverse the operation, apply it to elementary matrix. For this problem: 
+\\Row Reduce, $R_2 += 3R_1, R_2*=-1, R_1+=R_2 \Rightarrow R_2-=3R_1, R_2/=-1, R_1-=2R_2$ Then apply it to elementary matrices, index, and write it out
+$e_1=\begin{bmatrix}1&0\\-3&1\end{bmatrix},e_2=\begin{bmatrix}1&0\\0&-1\end{bmatrix},e_3=\begin{bmatrix}1&-2\\0&1\end{bmatrix}$ then write it out $A=e_3^{-1}e_2^{-1}e_1^{-1}I$ dont forget identity matrix at the end to make it work.
+\\Determine the standard matrix for $\begin{bmatrix}-4x_2-4x_3\\3x_1+7x_2+13x_3\\-x_1-2x_3\\4x_2+4x_3\end{bmatrix}$its $\begin{bmatrix}0&-4&-4\\3&7&13\\-1&0&-2\\0&4&4\end{bmatrix}$ in parametric vector form $x_1\begin{bmatrix}0\\3\\-1\\0\end{bmatrix}+x_2\begin{bmatrix}-4\\7\\0\\4\end{bmatrix}+x_3\begin{bmatrix}-4\\13\\-2\\4\end{bmatrix}=\begin{bmatrix}-8\\8\\2\\8\end{bmatrix}$\\
+
+Practice Test 2:\\
+\columnbreak
+
+Test 2: \\
+$A=\begin{bmatrix}1&2&0&0&1&6&4\\-2&-4&0&0&-2&-12&-8\\1&2&1&2&1&6&5 \\0&0&2&4&-1&-2&-6\end{bmatrix}=\begin{bmatrix}1&2&0&0&0&4&-4\\0&0&1&2&0&0&1\\0&0&0&0&1&2&8\\0&0&0&0&0&0&0\end{bmatrix}$
+Rank = 3, Nullity = 4, Rank + Nullity = Columns. Nul A $\in \mathbb{R}^3$ False, Row A = Row(RREF(A)) True, Col(A)=Col(RREF(A)) True, Col($A^T$)=Row(A) True.
+\\Basis for Row(A) $[1,2,0,0,0,4,-4],[0,0,1,2,0,0,1],[0,0,0,0,1,2,8]$ \\ Basis for Col A $\begin{bmatrix}1\\-2\\1\\0\end{bmatrix}, \begin{bmatrix}0\\0\\1\\2\end{bmatrix}\begin{bmatrix}1\\-2\\1\\-1\end{bmatrix}$ 
+ Nul A: Take each row of RREF(A), set it equal to 0,
+ Dependence relation: you know how to find it but its $2x_1=x_2$
+ $
+\textbf{Cofactor Expansion (Laplace Expansion)} \\
+\text{Choose any row }k\text{ or any column }k\text{ (pick one with the most zeros).}\\[6pt]
+\ \underline{\text{Example }(3\times3):}\quad\det\begin{pmatrix}a & b & c\\ d & e & f\\ g & h & i\end{pmatrix}= a\begin{vmatrix} e & f\\ h & i \end{vmatrix}- b\begin{vmatrix} d & f\\ g & i \end{vmatrix}+ c\begin{vmatrix} d & e\\ g & h \end{vmatrix}.$
+\\If A is 3x3 and $A^2=3A$ finall values of $\det$ A. A is either 3I or 0, so 27 or 0
+\\If Gx=y has a solution for every y in $\mathbb{R}^n$ will the columns of G be LI? Why or why not? No G may be overdetermined where some olumns may be redundant. To remove redundancy, G must have at most n columns.
+\\Suppose A is an nxn matrix with eigenvalue $\lambda$ and eigenvector v. If 3v and eigenvector of A? If so, what is the correspopnding eigenvalue? Yes, it is bc the vector itself doesnt change its just being scaled. The vector is still tied to whatever the eigenvalue is and it wont change.
+\\If V=$\mathbb{R}^2$ and B=$[b_1,b_2]=\begin{bmatrix}1&-2\\-3&5\end{bmatrix}C=[c_1,c_2]=\begin{bmatrix}1&2\\1&1\end{bmatrix}$ are bases. Find the change of coordinate matrix P from C to B. Show that row reductions of $[B|C]==[I|P]$ gives P. Result should equal $\begin{bmatrix}-7&-12\\-4&-7\end{bmatrix}$
+\\For x=[1,2] find the coordinates for x in both the basis B and C. Augment the basis matrices one by one with the given coordinate and row reduce.
+\\Let A be an mxn matrix. Suppose the nullspace of A is a plane in $\mathbb{R}^3$ and the range is spanned by a nonzero vector in $\mathbb{R}^5$ so Col(A)=Span(v). Determine m and n. Also find rank and nullity of A.Let $A$ be an $m \times n$ matrix.\\
+Given:$\text{Nul}(A)$ is a plane in $\mathbb{R}^3$ $\Rightarrow$ nullity $= 2$, $n = 3$
+- $\text{Col}(A) = \text{Span}(\mathbf{v}) \subset \mathbb{R}^5$ $\Rightarrow$ rank $= 1$, $m = 5$
+\\By the Rank-Nullity Theorem:$\text{rank} + \text{nullity} = n \Rightarrow 1 + 2 = 3$
+\\Answer: $m = 5$, $n = 3$, rank $= 1$, nullity $= 2$
+\\Let $1-t+6t^2, 5-3t, t-15t^2$. Use coordinate vectors to show theyre linearly dependent and give a relation. How to: Turn them into vectors, put them into a matrix, row reduce until you get a row of zeroes, thats proof. Then match degrees on opposite sides of an equal sign to get a dependence relation. Degree matching works since its linear.
+\\Let $p_1$ augmented with $p_2$ be a basis for h, find coordinates of $1-15t^2$ and $6-4t+6t^2$in h. Just use degree matching since its linear. Answer is -2.5,0,5 \& 1,1
+\\Explain why $1-15t^2$ and $6-4t+6t^2$ is a basis for h: The coordinate matrix [-2,5,1,0,5,1] row reduces to the identity matrix, meaning the vectors are LI and since thats true they also form a basis for H
+\\\textbf{Test 3:} 
+\\Find the Steady state probability vector: $\begin{bmatrix}0.3&0.1\\0.7&0.9\end{bmatrix}$. Take the matrix to the infinite power. Other option is $\begin{bmatrix}0.3&0.1\\0.7&0.9\end{bmatrix}\begin{bmatrix}x_1\\x_2\end{bmatrix}=\begin{bmatrix}x_1\\x_2\end{bmatrix}$ and solve system.
+\\Let u=$\begin{bmatrix}1\\2\\3\end{bmatrix}$, and let Q be the set of vectors x in $\mathbb{R}^3$ for which $u \cdot x = 0$
+\\Show $W$ is a subspace of $\mathbb{R}^3$\\
+Zero vector: $u\cdot 0=0$, so $0\in W$.
+\\Closed under addition: If $x,y\in W$, then $u\cdot(x+y)=u\cdot x+u\cdot y=0+0=0\Rightarrow x+y\in W$.
+\\Closed under scalar multiplication: For any scalar $c$ and $x\in W$, $u\cdot(cx)=c(u\cdot x)=c\cdot0=0\Rightarrow cx\in W$.
+\\Geometric description: $u$ is a normal vector to $W$, so $W$ is the plane through the origin that is orthogonal (perpendicular) to $u$.
+\\Basis for $W$
+\\Write a generic vector $x=(x_1,x_2,x_3)$ and impose $u\cdot x=0$
+\\$1\cdot x_1 + 2\cdot x_2 + 3\cdot x_3 = 0 \quad\Longrightarrow\quad x_1 = -2x_2 - 3x_3$
+\\Choose free parameters $s=x_2$ and $t=x_3$
+\\$x=(-2s-3t,\;s,\;t)=s\begin{bmatrix}-2\\1\\0\end{bmatrix}+t\begin{bmatrix}-3\\0\\1\end{bmatrix}$
+\\Thus a convenient basis is $\begin{bmatrix}-2\\1\\0\end{bmatrix} \begin{bmatrix}-3\\0\\1\end{bmatrix}$
+\end{multicols*}
+\pagebreak
+\begin{multicols*}{2}
+\footnotesize
+Let $W$ be the subspace spanned by the $v$'s. Write $y$ as the sum of a vector, $\hat{y}$, in $W$ and a vector, $z$, orthogonal to $W.$
+$\quad y = \begin{bmatrix} 24 \\ 3 \\ 6 \end{bmatrix}, \quad v_1 = \begin{bmatrix} 1 \\ 0 \\ -1 \end{bmatrix}, \quad v_2 = \begin{bmatrix} 2 \\ 1 \\ 2 \end{bmatrix}$
+Projection of $y$ onto $W$
+\\Solve $y=c_1v_1+c_2v_2+z$ with $z\perp W$ and set up $(A^\top A)\mathbf{c}=A^\top y$, where $A=[v_1;v_2]$
+$A^\top A=\begin{bmatrix}2 & -2\\-2 & 9\end{bmatrix},\, A^\top y=\begin{bmatrix}15\\101\end{bmatrix} $Solution: $\mathbf{c}=\begin{bmatrix}9\\7\end{bmatrix}$, i.e. $c_1=9,;c_2=7$
+\\Hence $\hat y=c_1v_1+c_2v_2=9\!\begin{bmatrix}1\\0\\-1\end{bmatrix}+7\!\begin{bmatrix}2\\1\\2\end{bmatrix}=\begin{bmatrix}23\\7\\5\end{bmatrix}$. Orthogonal component$z=y-\hat y=\begin{bmatrix}24\\3\\6\end{bmatrix}-\begin{bmatrix}23\\7\\5\end{bmatrix}=\begin{bmatrix}1\\-4\\1\end{bmatrix}.$Check: $v_1!\cdot! z=0,; v_2!\cdot! z=0$, so $z\perp W$.$\boxed{\;y=\hat y+z=\begin{bmatrix}23\\7\\5\end{bmatrix}+\begin{bmatrix}1\\-4\\1\end{bmatrix}\;}$Thus $\hat y\in W$ and $z$ is the required orthogonal complement.
+\\Orthonormal basis containing $v_1,;v_2,;z \quad z=\begin{bmatrix}1\\-4\\1\end{bmatrix}$ (the component of $y$ perpendicular to $W$)
+\\Norms: $\lVert v_1\rVert=\sqrt{1^{2}+0^{2}+(-1)^{2}}=\sqrt{2},\quad\lVert v_2\rVert=\sqrt{2^{2}+1^{2}+2^{2}}=3,\quad\lVert z\rVert=\sqrt{1^{2}+(-4)^{2}+1^{2}}=3\sqrt{2}.$
+\\Unit (orthonormal) vectors: $e_1=\frac{1}{\sqrt{2}}\begin{bmatrix}1\\0\\-1\end{bmatrix},\qquad e_2=\frac{1}{3}\begin{bmatrix}2\\1\\2\end{bmatrix},\qquad e_3=\frac{1}{3\sqrt{2}}\begin{bmatrix}1\\-4\\1\end{bmatrix}.$
+\\Coordinates of $x$ in that basis: Given $x=\begin{bmatrix}-14\\-5\\-5\end{bmatrix}$, its expansion in the orthonormal basis ${e_1,e_2,e_3}$ is obtained by plain dot-products
+\\$\begin{aligned}c_1 &= x\cdot e_1=\frac{-14(1)+0(-5)+(-1)(-5)}{\sqrt{2}}=\frac{-14+5}{\sqrt{2}}=-\frac{9}{\sqrt{2}},\\[6pt]c_2 &= x\cdot e_2=\frac{-14(2)+(-5)(1)+(-5)(2)}{3}=\frac{-28-5-10}{3}=-\frac{43}{3},\\[6pt]c_3 &= x\cdot e_3=\frac{-14(1)+(-5)(-4)+(-5)(1)}{3\sqrt{2}}=\frac{-14+20-5}{3\sqrt{2}}=\frac{1}{3\sqrt{2}}.\end{aligned}$
+\\Let $A$ be $m\times n$ matrix. Nul $A$ is a  line in $R^3$ and the range is spanned by two nonzero vectors $v_1,v_2$ in $\mathbb{R}^5$ so Col $A=$ Span$ (v_1,v_2)$. Determine m and n, also fina rank and nullity
+\\$\text{Nul},A$ sits inside the domain $\mathbb{R}^n$. You’re told it’s a line in $\mathbb{R}^3$, so $n=3$ nullity=1. $\text{Col},A$ lives in the codomain $\mathbb{R}^m$ It’s spanned by two independent vectors $v_1,v_2\in\mathbb{R}^5$, so m=5 rank=2. Rank-nullity check: $\text{rank}+\text{nullity}=2+1=3=n$. Answer: $m=5,; n=3,; \text{rank}(A)=2,; \text{nullity}(A)=1.$
+\\Define the map $T : M_{2 \times 2} \to P_1$ by $T\left( \begin{bmatrix} a & b \\ c & d \end{bmatrix} \right) = (a + 9c + 5d) t + (c - 4d) t$
+\\Example $T(f(t)) = \begin{bmatrix} 1 & 4 \\ 3 & 2 \end{bmatrix} = 38 + (-5)t$ Find $T\left( \begin{bmatrix} -1 & 7 \\ 1 & 2 \end{bmatrix} \right) = 2-9t$
+\\$T\left( \begin{bmatrix} -41 & 0 \\ 4 & 1 \end{bmatrix} \right) = 0$ its special bc it maps to the 0 polynomial
+\\Assume T is a linear transformation. Find the matrix A for T relative to $C = \left\{ \begin{bmatrix} 1 & 0 \\ 0 & 0 \end{bmatrix}, \begin{bmatrix} 0 & 1 \\ 0 & 0 \end{bmatrix}, \begin{bmatrix} 0 & 0 \\ 1 & 0 \end{bmatrix}, \begin{bmatrix} 0 & 0 \\ 0 & 1 \end{bmatrix} \right\}$and $B = \{ 1, t \}$, the standard bases for $M_{2 \times 2}$ and $P_1$, respectively.
+$C=!{E_{11},E_{12},E_{21},E_{22}}$ and $B={1,t}$ \\ $A_{B\leftarrow C}=\begin{bmatrix}T(E_{11}) & T(E_{12}) & T(E_{21}) & T(E_{22})\end{bmatrix}_{B}=\begin{bmatrix}1 & 0 & 9 & 5\\0 & 0 & 1 & -4\end{bmatrix}.$
+\\Column space: $\operatorname{Col}(A)=\operatorname{span}{\begin{bmatrix}1\\0\end{bmatrix},\begin{bmatrix}9\\1\end{bmatrix}}.$Rank $=2$
+\\Null space (solve $Ax=0$): $\operatorname{Nul}(A)=\operatorname{span}{\begin{bmatrix}0\\1\\0\\0\end{bmatrix},\begin{bmatrix}-41\\0\\4\\1\end{bmatrix}}$ and nullity $=2$
+\\Range and kernel of $T$ Range: The two independent images $1$ and $9+t$ already span $P_1$, so $\displaystyle\operatorname{Range}(T)=P_1.$
+\\Kernel (translate the basis vectors of $,\operatorname{Nul}(A)$ back to matrices) $\ker T=\operatorname{span}\!\{\underbrace{\begin{bmatrix}0&1\\0&0\end{bmatrix}}_{E{12}},\;\underbrace{\begin{bmatrix}-41&0\\4&1\end{bmatrix}}_{X_2}\}.$
+\vfill\columnbreak
+Let $P_1$ be the vector space of all real polynomials of degree 1 or less. Consider the linear transformation
+$T : P_1 \rightarrow P_1$ defined by $T(a + bt) = (4a + b) + (-b)t$ for any $a + bt \in P_1$. Example, $T(2 + t) = 9 - t$
+\\Image of $f(t)=3-10t$: $T(3-10t)=(4\cdot 3 + (-10)) + (-(-10))t = 2 + 10t.$
+\\Matrix of $T$ in the standard basis $E={1,t}$: $T(a+bt)=(4a+b) + (-b)t \Longrightarrow M_E=\begin{pmatrix}4 & 1\\ 0 & -1\end{pmatrix}.$
+\\Eigen-stuff of $M_E$: Characteristic polynomial: $\det(M_E-\lambda I)=(4-\lambda)(-1-\lambda)$
+$\Longrightarrow$ eigenvalues $\lambda_1=4,;\lambda_2=-1$.
+\\Eigenvector for $\lambda_1=4$: $(M_E-4I)v=0\Longrightarrow v_1=\begin{pmatrix}1\\0\end{pmatrix}.$
+\\Eigenvector for $\lambda_2=-1$: $(M_E+I)v=0\Longrightarrow v_2=\begin{pmatrix}1\\-5\end{pmatrix}.$
+\\So $B_1={v_1,v_2}$ with $v_1=(1,0)^{\top},;v_2=(1,-5)^{\top}$
+\\A diagonal basis $C$ for $P_1$ and the diagonal matrix $D$: Identify $(a,b)^{!\top}\leftrightarrow a+bt$:
+$v_1\leftrightarrow 1,\qquad v_2\leftrightarrow 1-5t,$
+so $C={,1,;1-5t,}$. Because $T(1)=4$ and $T(1-5t)=-(1-5t)$, $D_{C}=\begin{pmatrix}4 & 0\\ 0 & -1\end{pmatrix}.$
+\\Change-of-coordinates matrices: Let $F={e_1,e_2}$ with $e_1=(1,0)^{\top},,e_2=(0,1)^{\top}$. Matrix whose columns are $v_1,v_2$: $P_{F\leftarrow B_1}=\begin{pmatrix}1 & 1\\ 0 & -5\end{pmatrix}.$
+Its inverse gives coords in $B_1$:
+$P_{B_1\leftarrow F}=P_{F\leftarrow B_1}^{-1}=\begin{pmatrix}1 & \tfrac15\\ 0 & -\tfrac15\end{pmatrix}.$
+\\Coordinates in $C$ and the diagonal action: Write $f(t)=5+3t$ in $C$:
+$\alpha,1+\beta,(1-5t)=5+3t \Longrightarrow \beta=-\tfrac35,;\alpha=\tfrac{28}{5}.$
+Hence $[f]_C=\begin{pmatrix}\tfrac{28}{5}\\-\tfrac35\end{pmatrix}$
+\\Compute $T(f(t))$ and express in $C$:
+\\$T(f)=T(5+3t)=23-3t,\qquad \gamma,1+\delta,(1-5t)=23-3t \Longrightarrow \delta=\tfrac35,;\gamma=\tfrac{112}{5},$
+\\so $[T(f)]_C=\begin{pmatrix}\tfrac{112}{5}\\\tfrac35\end{pmatrix}$.
+\\Verify diagonal action:
+$D,[f]_C=\begin{pmatrix}4 & 0\ 0 & -1\end{pmatrix} \begin{pmatrix}\tfrac{28}{5}\\-\tfrac35\end{pmatrix}=\begin{pmatrix}\tfrac{112}{5}\\[4pt]\tfrac35\end{pmatrix} =[T(f)]_C.$
+\\ \Large Proofs
+
+\end{multicols*}
+
+
+\end{document}
