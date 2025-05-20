@@ -137,8 +137,514 @@ Hence $[f]_C=\begin{pmatrix}\tfrac{28}{5}\\-\tfrac35\end{pmatrix}$
 \\so $[T(f)]_C=\begin{pmatrix}\tfrac{112}{5}\\\tfrac35\end{pmatrix}$.
 \\Verify diagonal action:
 $D,[f]_C=\begin{pmatrix}4 & 0\ 0 & -1\end{pmatrix} \begin{pmatrix}\tfrac{28}{5}\\-\tfrac35\end{pmatrix}=\begin{pmatrix}\tfrac{112}{5}\\[4pt]\tfrac35\end{pmatrix} =[T(f)]_C.$
-\\ \Large Proofs
+\textbf{To find the eigenspace corresponding to an eigenvalue } $\lambda$ \textbf{ of a matrix } $A$:
 
+\begin{enumerate}
+  \item Compute the eigenvalue $\lambda$ from the characteristic equation: $\det(A - \lambda I) = 0$
+  \item Form the matrix $A - \lambda I$ and solve the homogeneous system:
+  $(A - \lambda I)\vec{x} = \vec{0}$
+  \item The solution set (nullspace of $A - \lambda I$) is the eigenspace corresponding to $\lambda$.
+  \item A - 4I = $\begin{bmatrix} 0 & 1 \\ 0 & -2 \end{bmatrix}\quad \Rightarrow \quad \begin{bmatrix} 0 & 1 \\ 0 & -2 \end{bmatrix}\begin{bmatrix} x \\ y \end{bmatrix}= \begin{bmatrix} 0 \\ 0 \end{bmatrix}$
+  \item Solve the system: $y = 0 \Rightarrow x \text{ free} \Rightarrow \vec{x} = x\begin{bmatrix} 1 \\ 0 \end{bmatrix}$
+  \item $A - 2I = \begin{bmatrix} 2 & 1 \\ 0 & 0 \end{bmatrix}\quad \Rightarrow \quad\begin{bmatrix} 2 & 1 \\ 0 & 0 \end{bmatrix}\begin{bmatrix} x \\ y \end{bmatrix}= \begin{bmatrix} 0 \\ 0 \end{bmatrix}\Rightarrow 2x + y = 0$
+  \item $y = -2x \Rightarrow \vec{x} = x\begin{bmatrix} 1 \\ -2 \end{bmatrix}$
+\end{enumerate}
+\textbf{Step-by-step: How to find an eigenvector}
+\begin{enumerate}
+    \item Find the eigenvalues by solving: $\det(A - \lambda I) = 0$
+    \item For each eigenvalue $\lambda$, solve the equation: $(A - \lambda I)\vec{x} = \vec{0}$
+    \item The nonzero solutions $\vec{x}$ are the eigenvectors corresponding to $\lambda$
+\end{enumerate}
+\textbf{To diagonalize a matrix } $A$:
+\begin{enumerate}
+    \item Find the eigenvalues $\lambda_1, \lambda_2, \dots$ by solving: $\det(A - \lambda I) = 0$
+    \item For each eigenvalue $\lambda_i$, find a basis for its eigenspace by solving: $(A - \lambda_i I)\vec{x} = \vec{0}$
+    \item If you find $n$ linearly independent eigenvectors (for an $n \times n$ matrix), form matrix $P$ with these vectors as columns.
+    \item Form diagonal matrix $D$ with the eigenvalues on the diagonal in the same order as their corresponding eigenvectors in $P$.
+    \item $A = P D P^{-1}$
+\end{enumerate}
+\columnbreak \pagebreak \textbf{Goal:} Given a basis $\{ \vec{v}_1, \vec{v}_2, \dots, \vec{v}_n \}$ for a subspace of $\mathbb{R}^n$, construct an \emph{orthonormal} basis $\{ \vec{u}_1, \vec{u}_2, \dots, \vec{u}_n \}$.
+
+\textbf{Steps:}
+\begin{align*}
+\vec{u}_1 &= \frac{\vec{v}_1}{\|\vec{v}_1\|} \\
+\vec{u}_2' &= \vec{v}_2 - \text{proj}_{\vec{u}_1} \vec{v}_2 
+= \vec{v}_2 - \left( \frac{\vec{v}_2 \cdot \vec{u}_1}{\vec{u}_1 \cdot \vec{u}_1} \right)\vec{u}_1 \\
+\vec{u}_2 &= \frac{\vec{u}_2'}{\|\vec{u}_2'\|} \\
+\vec{u}_3' &= \vec{v}_3 - \text{proj}_{\vec{u}_1} \vec{v}_3 - \text{proj}_{\vec{u}_2} \vec{v}_3 \\
+\vec{u}_3 &= \frac{\vec{u}_3'}{\|\vec{u}_3'\|} 
+\end{align*}
+
+\textbf{Example: Orthonormalize } $\vec{v}_1 = \begin{bmatrix} 1 \\ 1 \end{bmatrix}, \ 
+\vec{v}_2 = \begin{bmatrix} 1 \\ -1 \end{bmatrix}$
+
+\begin{itemize}
+  \item Step 1:
+  \[
+  \vec{u}_1 = \frac{\vec{v}_1}{\|\vec{v}_1\|} = 
+  \frac{1}{\sqrt{2}} \begin{bmatrix} 1 \\ 1 \end{bmatrix}
+  \]
+
+  \item Step 2:
+  \[
+  \text{proj}_{\vec{u}_1} \vec{v}_2 = 
+  \left( \frac{\vec{v}_2 \cdot \vec{u}_1}{\vec{u}_1 \cdot \vec{u}_1} \right)\vec{u}_1 
+  = 0 \Rightarrow \vec{u}_2' = \vec{v}_2
+  \]
+
+  \[
+  \vec{u}_2 = \frac{\vec{v}_2}{\|\vec{v}_2\|} = 
+  \frac{1}{\sqrt{2}} \begin{bmatrix} 1 \\ -1 \end{bmatrix}
+  \]
+
+  \item So the orthonormal basis is:
+  \[
+  \left\{
+    \frac{1}{\sqrt{2}} \begin{bmatrix} 1 \\ 1 \end{bmatrix},\ 
+    \frac{1}{\sqrt{2}} \begin{bmatrix} 1 \\ -1 \end{bmatrix}
+  \right\}
+  \]
+\end{itemize}
+
+
+\Large Proofs
+\footnotesize
+% ----------------------------------------
+% Solutions
+% ----------------------------------------
+
+\paragraph{Test 2 Problem 7 (solution).}
+Let the columns of $A$ be $a_1,\dots ,a_n$ and the columns of $B$ be $b_1,\dots ,b_p$.  
+Matrix multiplication gives  
+$$
+AB \;=\; A[b_1\, b_2\, \dots\, b_p] \;=\; [\,Ab_1\, Ab_2\, \dots\, Ab_p\,].
+$$
+Each vector $Ab_j$ is a linear combination of the columns of $A$ because $Ab_j = a_1b_{1j} + \dots + a_nb_{nj}$.  
+Hence every column of $AB$ lies in the column space of $A$, so  
+$$
+\text{Col}(AB) \subseteq \text{Col}(A) \quad\Longrightarrow\quad
+\operatorname{rank}(AB) \le \operatorname{rank}(A).
+$$
+
+\vspace{1em}
+
+\paragraph{Test 2 Problem 8 (solutions, 4 points each).}
+
+\begin{enumerate}[label=(\alph*)]
+
+\item \textbf{False.}  True or False: Row operations can change the row space of a matrix.
+Elementary row operations do \emph{not} change the row space.  
+Each new row is a linear combination of the original rows, and each original row is a linear combination of the new rows, so the span of the rows is preserved.  
+Therefore row operations leave the row space unchanged.
+
+\item \textbf{True.}  
+True or False: A change of coordinate matrix is always square. A change–of–coordinate matrix converts coordinate column vectors from one basis of a vector space $V$ to another basis of $V$.  
+Both bases have $\dim V$ vectors, so the matrix has the same number of rows and columns and is therefore square.
+
+\item \textbf{False.}  True or False: If $B$ is obtained by scaling one row of $A$, then $\det(B)=\det(A)$.
+Scaling a single row by a non-zero scalar $k$ multiplies the determinant by $k$.  
+Example:  
+$$
+A=\begin{bmatrix}1&2\\3&4\end{bmatrix},\quad
+B=\begin{bmatrix}3&6\\3&4\end{bmatrix}\ (\text{first row multiplied by }3).
+$$
+$\det(A) = -2$ while $\det(B) = 3(-2) = -6 \ne \det(A)$.
+
+\item \textbf{True.}  True or False: The dimension of the row and column space of $A$ is the same even if $A$ is not a square matrix.
+The row rank of a matrix equals its column rank, a fundamental theorem of linear algebra.  
+Thus $\dim\text{Row}(A)=\dim\text{Col}(A)$ even when $A$ is rectangular.
+\end{enumerate}
+% ----------------------------------------
+% Problem 12 and solutions
+% ----------------------------------------
+
+\paragraph{Test 2 Problem 12.}
+Let $V = M_{2\times 2}$ be the vector space over $\mathbb{R}$ of all real $2\times 2$ matrices.  
+Let $W$ be the subset of $V$ consisting of all symmetric matrices, i.e.
+$$
+W \;=\;\bigl\{\begin{bmatrix} a & b \\ b & c \end{bmatrix}\,\bigm|\,a,b,c\in\mathbb{R}\bigr\}.
+$$
+
+\begin{enumerate}[label=(\alph*)]
+
+\item \textbf{Prove that $W$ is a subspace of $V$.}
+
+\textit{Solution.}  
+To show that $W$ is a subspace we verify the three axioms:
+
+\begin{itemize}
+\item \emph{Zero element.}  
+$\begin{bmatrix}0&0\\0&0\end{bmatrix}$ is symmetric, so $0_V\in W$.
+
+\item \emph{Closed under addition.}  
+Let $A=\begin{bmatrix}a&b\\b&c\end{bmatrix}$ and $B=\begin{bmatrix}d&e\\e&f\end{bmatrix}$ in $W$.  
+Then
+$$
+A+B = \begin{bmatrix} a+d & b+e \\ b+e & c+f \end{bmatrix},
+$$
+which is symmetric because the off-diagonal entries match. Hence $A+B\in W$.
+
+\item \emph{Closed under scalar multiplication.}  
+For any $\lambda\in\mathbb{R}$ and $A=\begin{bmatrix}a&b\\b&c\end{bmatrix}\in W$,
+$$
+\lambda A = \begin{bmatrix} \lambda a & \lambda b \\ \lambda b & \lambda c \end{bmatrix},
+$$
+which is again symmetric. Thus $\lambda A\in W$.
+\end{itemize}
+Since all three conditions hold, $W$ is a subspace of $V$.
+
+\item \textbf{Find a basis of $W$ and determine $\dim W$.}
+
+\textit{Solution.}  
+Every $A\in W$ can be written uniquely as
+$$
+A = a\begin{bmatrix}1&0\\0&0\end{bmatrix}
+  + b\begin{bmatrix}0&1\\1&0\end{bmatrix}
+  + c\begin{bmatrix}0&0\\0&1\end{bmatrix}.
+$$
+Hence the three symmetric matrices
+$$
+E_1=\begin{bmatrix}1&0\\0&0\end{bmatrix},\quad
+E_2=\begin{bmatrix}0&1\\1&0\end{bmatrix},\quad
+E_3=\begin{bmatrix}0&0\\0&1\end{bmatrix}
+$$
+span $W$. They are linearly independent because a linear combination $xE_1+yE_2+zE_3=0$ forces $x=y=z=0$.  
+Thus $\{E_1,E_2,E_3\}$ is a basis of $W$ and
+$$
+\dim W = 3.
+$$
+
+\end{enumerate}
+\textbf{Test 3 Problem 1:}
+\begin{enumerate}[label=(\alph*)]
+
+    \item If $A$ and $B$ have the same eigenvalues then $A$ is similar to $B$.\\[2pt]
+    \textbf{False.}\;  
+    Take
+    $
+    A = I_2
+    =
+    \begin{bmatrix}
+    1 & 0\\
+    0 & 1
+    \end{bmatrix},
+    \quad
+    B =
+    \begin{bmatrix}
+    1 & 1\\
+    0 & 1
+    \end{bmatrix}
+    $.
+    Both have the single eigenvalue $1$, yet $A$ is diagonal while $B$ is a non-diagonal Jordan block, so no invertible matrix $P$ satisfies $A = PBP^{-1}$. Hence they are not similar.
+    
+    %--------------------------------------------------
+    \item If $v$ is an eigenvector of $A$ with eigenvalue $2$, then $4$ is an eigenvalue of the matrix $2A$.\\[2pt]
+    \textbf{True.}\;  
+    Given $Av = 2v$ with $v \ne 0$, compute
+    $
+    (2A)v = 2(Av) = 2\cdot 2v = 4v
+    $.
+    Thus $v$ is an eigenvector of $2A$ and its eigenvalue is $4$.
+    
+    %--------------------------------------------------
+    \item The eigenvalues of $A$ are the same as the eigenvalues of $A^{T}$.\\[2pt]
+    \textbf{True.}\;  
+    The characteristic polynomials satisfy
+    $
+    \det(\lambda I - A^{T}) = \det\!\bigl((\lambda I - A)^{T}\bigr)
+            = \det(\lambda I - A)
+    $
+    because the determinant of a matrix equals the determinant of its transpose.  
+    Therefore $\lambda$ is a root of one polynomial exactly when it is a root of the other, so $A$ and $A^{T}$ share the same eigenvalues (including algebraic multiplicities).
+    
+    %--------------------------------------------------
+    \item If $v_{1}$ and $v_{2}$ are eigenvectors of $A$ with eigenvalue $\lambda$, then $v_{1}+v_{2}$ is an eigenvector of $A$ with eigenvalue $\lambda$.\\[2pt]
+    \textbf{False.}\;  
+    Although the eigenspace $E_{\lambda}$ is a subspace, the sum $v_{1}+v_{2}$ could be the zero vector, which is \emph{not} an eigenvector.  
+    Example: let $A = I_2$, $\lambda = 1$, $v_{1} = \begin{bmatrix}1\\0\end{bmatrix}$, $v_{2} = \begin{bmatrix}-1\\0\end{bmatrix}$.  
+    Both $v_{1}$ and $v_{2}$ are eigenvectors, but $v_{1}+v_{2}=0$.  
+    Since zero cannot serve as an eigenvector, the statement fails.
+    If one adds the non-zero requirement, then the claim becomes true because $A(v_{1}+v_{2}) = \lambda(v_{1}+v_{2})$.
+    \end{enumerate}
+\textbf{EVERYTHING ONWARDS FROM HERE IS FROM PRACTICE TESTS}
+% ------------------------------------------------------------------
+% Problems and solutions
+% ------------------------------------------------------------------
+
+% ---------------------------- Problem 7 ---------------------------
+\paragraph{Problem 7.}
+For each statement decide whether it is \textbf{TRUE} or \textbf{FALSE}.  
+If it is true give a proof.  
+If it is false produce a counterexample and name the theorem that shows why the conclusion fails.
+
+\begin{enumerate}[label=(\alph*)]
+\setcounter{enumi}{5}
+
+\item If $A$ and $B$ are both invertible then $(A^{-1}B)^{T}$ is also invertible.\\
+\textbf{True.}  
+$A^{-1}$ and $B$ are invertible so $A^{-1}B$ is invertible by the Product Inverse Theorem  
+$\bigl((A^{-1}B)^{-1}=B^{-1}A\bigr)$.  
+The transpose of any invertible matrix is invertible with inverse $\bigl((A^{-1}B)^{T}\bigr)^{-1}=(A^{-1}B)^{-T}$.  
+Hence $(A^{-1}B)^{T}$ is invertible.
+
+\item If $A^{4}=3I$ then $A$ is invertible.\\
+\textbf{True.}  
+Multiply $A^{4}=3I$ on the left by $\tfrac{1}{3}A^{3}$ to obtain  
+$\tfrac{1}{3}A^{3}A^{4}=\tfrac{1}{3}A^{3}\,3I \Longrightarrow A=\tfrac{1}{3}A^{3}$.  
+Therefore $A^{-1}=\tfrac{1}{3}A^{3}$ and $A$ is invertible.  
+(The theorem used is: if a matrix admits a two–sided inverse it is invertible.)
+
+\item If $AB=B$ for some matrix $B\neq 0$ then $A$ is invertible.\\
+\textbf{False.}  
+Let 
+$
+A=\begin{bmatrix}1&0\\0&0\end{bmatrix},\,
+B=\begin{bmatrix}1&0\\0&0\end{bmatrix}.
+$  
+Then $AB=B$ with $B\neq 0$ yet $A$ is not invertible (its second row is zero so its determinant is zero).  
+Theorem used: a square matrix is invertible exactly when its determinant is non–zero.
+
+\item If $E$ is an elementary matrix then $\det(E)=1$.\\
+\textbf{False.}  
+Row–swap elementary matrices satisfy $\det(E)=-1$ and row–scaling matrices satisfy $\det(E)=k$ where $k$ is the scaling factor.  
+Example  
+$
+E=\begin{bmatrix}0&1\\1&0\end{bmatrix}
+$  
+is a row–swap matrix with determinant $-1$.  
+Theorem used: a determinant changes sign under a row swap and scales by $k$ when a row is multiplied by $k$.
+
+\item $(AB)^{2}=A^{2}B^{2}$.\\
+\textbf{False.}  
+Choose  
+$
+A=\begin{bmatrix}0&1\\0&0\end{bmatrix},\,
+B=\begin{bmatrix}0&0\\1&0\end{bmatrix}.
+$  
+Then $AB=\begin{bmatrix}1&0\\0&0\end{bmatrix}$ so $(AB)^{2}=AB$, whereas  
+$A^{2}=0$ so $A^{2}B^{2}=0$.  
+They are different.  
+Theorem used: in general matrix multiplication is not commutative so powers do not distribute in that way.
+
+\item If $A$ is a square matrix with two identical rows then $A$ cannot be invertible.\\
+\textbf{True.}  
+Identical rows are linearly dependent so the rows of $A$ fail to form a basis of $\mathbb R^{n}$.  
+Hence $\det(A)=0$ and $A$ is not invertible.  
+(Theorem used: a matrix is invertible exactly when its determinant is non–zero.)
+
+\end{enumerate}
+
+% ---------------------------- Problem 17 ---------------------------
+\paragraph{Problem 17.}
+Calculate the area of the parallelogram determined by the vertices  
+$(-1,-2),\ (1,4),\ (6,2),\ (8,8)$.
+
+\textit{Solution.}  
+Take adjacent edges based at $(-1,-2)$  
+\[
+v_{1}=(1,4)-(-1,-2)=(2,6),\quad
+v_{2}=(6,2)-(-1,-2)=(7,4).
+\]
+The area is the absolute value of the determinant formed by $v_{1}$ and $v_{2}$  
+\[
+\text{Area}=\lvert 2\cdot 4-6\cdot 7\rvert=\lvert 8-42\rvert=34.
+\]
+
+% ---------------------------- Problem 18 ---------------------------
+\paragraph{Problem 18.}
+Assume  
+$\det\!\begin{bmatrix}a&b\\c&d\end{bmatrix}=2$.  
+Evaluate
+\[
+\det\!\begin{bmatrix}
+2 & -2 & 0\\
+c+1 & -1 & 2a\\
+d-2 & 2 & 2b
+\end{bmatrix}.
+\]
+
+\textit{Solution.}  
+A direct expansion gives  
+\[
+\det = 4(-ad+bc)= -4(ad-bc)= -4\cdot 2 = -8.
+\]
+
+% ---------------------------- Problem 26 ---------------------------
+\paragraph{Problem 26.}
+Let $B$ be a basis of a vector space $V$.
+
+\begin{enumerate}[label=(\alph*)]
+\item If one vector is removed from $B$ then the remaining set does not span $V$.\\[2pt]
+\textit{Proof.}  
+$B$ has $\dim V$ vectors.  
+Removing one vector leaves $\dim V -1$ vectors.  
+No set with fewer than $\dim V$ vectors can span $V$.
+
+\item If one additional vector from $V$ is added to $B$ then the enlarged set is not linearly independent.\\[2pt]
+\textit{Proof.}  
+Any set in $V$ with more than $\dim V$ vectors is linearly dependent.  
+Adding one vector to the $\dim V$ vectors of $B$ produces $\dim V+1$ vectors, hence dependence follows.
+\end{enumerate}
+
+% ---------------------------- Problem 27 ---------------------------
+\paragraph{Problem 27.}
+Let $T:V\to W$ be a linear transformation.
+
+\begin{enumerate}[label=(\alph*)]
+\item The range of $T$ is a subspace of $W$.\\[2pt]
+\textit{Proof.}  
+The zero vector of $W$ equals $T(0)$.  
+If $y_{1}=T(x_{1})$ and $y_{2}=T(x_{2})$ then for any scalars $\alpha,\beta$  
+$\alpha y_{1}+\beta y_{2}=T(\alpha x_{1}+\beta x_{2})$ which is in the range.  
+Hence the range satisfies the subspace test.
+
+\item The kernel of $T$ is a subspace of $V$.\\[2pt]
+\textit{Proof.}  
+$T(0)=0$ so $0$ lies in the kernel.  
+If $x_{1},x_{2}\in\ker T$ then $T(x_{1})=T(x_{2})=0$.  
+For any scalars $\alpha,\beta$ we have  
+$T(\alpha x_{1}+\beta x_{2})=\alpha T(x_{1})+\beta T(x_{2})=0$,  
+so $\alpha x_{1}+\beta x_{2}\in\ker T$.  
+Therefore the kernel is a subspace.
+\end{enumerate}
+% -------------------------------------------------------------
+% Additional Linear-Algebra Problems — Statements and Solutions
+% -------------------------------------------------------------
+
+% --------------------------- Problem 28 -----------------------
+\paragraph{28) Let $A$ be a $4\times 7$ matrix.}
+
+\begin{enumerate}[label=(\alph*)]
+\item \textbf{Find all possible values of $\operatorname{nullity}(A)$.}
+
+By the Rank–Nullity Theorem,
+$
+\operatorname{rank}(A)+\operatorname{nullity}(A)=7.
+$
+Because $A$ has $4$ rows, $\operatorname{rank}(A)\le 4$.  
+Hence
+$
+\operatorname{nullity}(A)=7-\operatorname{rank}(A)\in\{7,6,5,4,3\}.
+$
+
+\item \textbf{If $T(\vec x)=A\vec x$, could $T$ be one-to-one?}
+
+No. A linear map is one-to-one exactly when its nullity is $0$, but in part (a) we saw $\operatorname{nullity}(A)\ge 3$.
+
+\item \textbf{If $T(\vec x)=A\vec x$, what is the codomain of $T$? Could $T$ be onto its codomain?}
+
+The codomain is $\mathbb R^{4}$ (one coordinate for each row).  
+$T$ is onto iff $\operatorname{rank}(A)=4$. This value is attainable, so $T$ \emph{could} be onto.
+
+\end{enumerate}
+
+% --------------------------- Problem 5 ------------------------
+\paragraph{5) Closure of the null space.}
+
+Let $A\vec u=\vec 0$ and $A\vec v=\vec 0$ and let $a,b\in\mathbb R$.  
+Then
+$
+A(a\vec u+b\vec v)=aA\vec u+bA\vec v=a\vec 0+b\vec 0=\vec 0.
+$
+Therefore $\vec w=a\vec u+b\vec v$ lies in $\operatorname{Nul}A$.
+
+% --------------------------- Problem 6 ------------------------
+\paragraph{6) Linear dependence preserved under a linear map.}
+
+Suppose $\{\,\vec v_{1},\dots,\vec v_{n}\,\}\subset V$ is linearly dependent, so
+$
+c_{1}\vec v_{1}+\dots+c_{n}\vec v_{n}=\vec 0
+$
+for some scalars not all zero.  
+Apply a linear transformation $T:V\to W$:
+$
+c_{1}T(\vec v_{1})+\dots+c_{n}T(\vec v_{n})=T(\vec 0)=\vec 0.
+$
+Because not all $c_{i}$ are zero, $\{\,T(\vec v_{1}),\dots,T(\vec v_{n})\,\}$ is linearly dependent in $W$.
+
+% --------------------------- Problem 7 ------------------------
+\paragraph{7) One-to-one maps carry independence to independence.}
+
+Let $T:V\to W$ be one-to-one and assume $\{\,\vec v_{1},\dots,\vec v_{n}\,\}$ is linearly \emph{independent}.  
+Suppose a linear relation
+$
+c_{1}T(\vec v_{1})+\dots+c_{n}T(\vec v_{n})=\vec 0
+$
+holds. Apply $T^{-1}$ on its image (possible because $T$ is injective):
+$
+T(c_{1}\vec v_{1}+\dots+c_{n}\vec v_{n})=\vec 0 \;\Longrightarrow\;
+c_{1}\vec v_{1}+\dots+c_{n}\vec v_{n}=\vec 0.
+$
+Independence of the $\vec v_{i}$ forces all $c_{i}=0$, so the images are also independent.
+
+% --------------------------- Problem 4 ------------------------
+\paragraph{4) Existence of solutions for every right-hand side.}
+
+A homogeneous system of $40$ equations in $42$ unknowns can have at most 
+$
+\operatorname{nullity}=42-40=2
+$
+(independent free variables).  
+The statement that there are $5$ linearly independent solutions contradicts this bound, so the described situation cannot occur.  
+Even ignoring that contradiction, a system is consistent for every right-hand side $\vec b$ only when the coefficient matrix has full row rank (its rows span $\mathbb R^{40}$).  
+Here $\operatorname{rank}\le 40$ but need not be $40$, so the system need not have a solution for every $\vec b$.
+% -------------------------------------------------------------
+% Problem 11
+% For each statement, decide whether it is \textbf{TRUE} or \textbf{FALSE}.
+% Prove a true statement or give a counterexample if it is false.
+% -------------------------------------------------------------
+
+\begin{enumerate}[label=(\alph*)]
+
+    \item If $A$ is an $m\times n$ matrix and the linear transformation $\vec x\mapsto A\vec x$ is \emph{onto}, then $\operatorname{rank}A=m$.\\
+    \textbf{True.}  Onto means the column space equals $\mathbb R^{m}$, whose dimension is $m$, so the rank is $m$.
+    
+    \item If $A$ is invertible, then $A^{2}\ne 0$.\\
+    \textbf{True.}  If $A^{2}=0$, multiply on the left by $A^{-1}$ to get $A=0$, contradicting invertibility.
+    
+    \item If $S$ is a linearly independent set, then $S$ is a basis for $V$.\\
+    \textbf{False.}  In $\mathbb R^{3}$ the set $\{(1,0,0)\}$ is independent but not a basis because it does not span $\mathbb R^{3}$.
+    
+    \item If $A$ and $B$ are square and $AB=BA$, then $(AB)^{2}=A^{2}B^{2}$.\\
+    \textbf{True.}
+    \[
+    (AB)^{2}=ABAB=A(BA)B=A(AB)B=A^{2}B^{2}.
+    \]
+    
+    \item If $A$ is similar to $B$, then $A^{2}$ is similar to $B^{2}$.\\
+    \textbf{True.}  $B=P^{-1}AP$ implies $B^{2}=P^{-1}A^{2}P$.
+    
+    \item If $A$ and $B$ are both invertible, then $(A^{-1}B)^{T}$ is invertible.\\
+    \textbf{True.}  $A^{-1}B$ is invertible and the transpose of an invertible matrix is invertible.
+    
+    \item $A$ is diagonalizable if and only if $A$ has $n$ distinct eigenvalues.\\
+    \textbf{False.}  The identity matrix $I_{n}$ is diagonalizable but has only one eigenvalue.
+    
+    \item If $AP=PD$ with $D$ diagonal, then the non-zero columns of $P$ are eigenvectors of $A$.\\
+    \textbf{True.}  Writing $P=[\vec p_{1}\ \dots\ \vec p_{k}]$ and $D=\operatorname{diag}(\lambda_{1},\dots,\lambda_{k})$ gives $A\vec p_{i}=\lambda_{i}\vec p_{i}$.
+    
+    \item If $A$ is invertible and $1$ is an eigenvalue of $A$, then $1$ is an eigenvalue of $A^{-1}$.\\
+    \textbf{True.}  Eigenvalues of $A^{-1}$ are reciprocals of those of $A$; $1^{-1}=1$.
+    
+    \item If $A$ is row-equivalent to the identity matrix, then $A$ is diagonalizable.\\
+    \textbf{False.}  $A=\begin{bmatrix}1&1\\0&1\end{bmatrix}$ row-reduces to $I_{2}$ but is not diagonalizable (one Jordan block).
+    
+    \item If $\vec u,\vec v,\vec w$ lie in a vector space of dimension 2, then $\vec w$ is a linear combination of $\vec u$ and $\vec v$.\\
+    \textbf{False.}  Take $\vec u=\vec v=(1,0)$ in $\mathbb R^{2}$; $\vec w=(0,1)$ is not a combination of $\vec u$ and $\vec v$.
+    
+    \item If $A^{2}=2I$, then $A$ is invertible.\\
+    \textbf{True.}  Multiply $A^{2}=2I$ on the left by $\tfrac12A$ to obtain $A=\tfrac12A^{3}$, so $A^{-1}=\tfrac12A$.
+    \end{enumerate}
+    % Effects of elementary row operations on the determinant
+
+\begin{tabular}{|l|l|l|}
+    \hline
+    \textbf{Row operation} & \textbf{New determinant} & \textbf{Reason} \\ \hline
+    Swap rows $i$ and $j$        & $\det(A') = -\,\det(A)$ & Alternating property \\ \hline
+    Multiply row $i$ by $k\neq 0$ & $\det(A') = k\,\det(A)$ & Multilinearity \\ \hline
+    $R_j \gets R_j + k\,R_i$ ($i\neq j$) & $\det(A') = \det(A)$ & Multilinearity and zero for equal rows \\ \hline
+    \end{tabular}
+    
 \end{multicols*}
 
 
